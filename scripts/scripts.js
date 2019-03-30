@@ -1,5 +1,7 @@
 $(document).ready(function() {
+  // elements wil go here
   var $container = $(".container");
+  // template to clone. We will also take a size of "track" from it
   var $user = $(".user")
     .first()
     .clone();
@@ -41,13 +43,14 @@ $(document).ready(function() {
   }
   var diffMs = now - startDate;
   var diffMins = Math.round(diffMs / 60000);
+  // 540 min between 9:00 and 18:00
   var leaderPositionPercent = diffMins == 540 ? 100 : diffMins / 5.4;
   var leaderPositionPix = leaderPositionPercent * (trackWidth / 100);
 
-  var counter = 1;
+  var counter = 0;
   for (let item of data) {
     // some async stuff with 'let'
-    let counter_local = counter;
+    let counter_local = counter + 1;
     setTimeout(function() {
       var names = item.username.split(" ");
       var shortName = names[1] + " " + names[2][0] + ".";
